@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assignment 6 </title>
+
+<style type="text/css">
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+<script>
+     function detectBrowser() {
+        if (navigator.userAgent.indexOf("FireFox") != -1) {
+                    document.getElementById("browser").innerHTML = "FireFox";
+                } //FireFox Browser
+         else if (navigator.userAgent.indexOf("Chrome") != -1) {
+                    document.getElementById("browser").innerHTML = "Chrome";
+                } //Chrome Browser
+         else if (navigator.userAgent.indexOf("Safari") != -1) {
+                    document.getElementById("browser").innerHTML = "Safari";
+                } //Safari Browser
+         else  {
+            document.getElementById("browser").innerHTML = "You are not using one of the more common browsers.";
+                }
+    } //end of 'detectBrowser' function 
+    
+    function doMath() {
+        var arrayNum = document.getElementsByName("num");
+        
+        var sum = 0;
+        var product = 1;
+        var average = 0;
+        
+        
+        //product calculation
+        //'for' loop
+        for (var counter = 0; counter < arrayNum.length; counter=counter+1){
+            
+            if (parseInt(arrayNum[counter].value)) 
+            {
+                product *= parseInt(arrayNum[counter].value);
+            }
+        }
+        
+        //sum calculation
+        //'for' loop
+        for (var counter=0; counter < arrayNum.length; counter=counter+1){
+            
+            if (parseInt(arrayNum[counter].value)) 
+                {
+                    sum += parseInt(arrayNum[counter].value);
+                }
+        }
+        
+        //average calculation
+            average = sum / arrayNum.length;
+        
+        
+        //outputs of the calculations in the 'result' div
+        
+        if (document.getElementById("radAvg").checked){
+            $('#result').html('The Average is ' + average);
+        }
+        if (document.getElementById("radSum").checked){
+            $('#result').html('The Sum is ' + sum);        
+        }
+        if (document.getElementById("radProduct").checked){
+            $('#result').html('The Product is ' + product);    
+        }
+              
+        return false;
+            } //end of 'doMath()' function
+    </script>
+</head>
+
+<body>
+<h1> Assignment 6</h1>
+    <h2> Part 1</h2>
+    <button onclick="detectBrowser()"> Detect My Browser </button>
+
+<p id="browser">
+    </p> <!-- end of 'browser' id div -->
+    
+    <hr>
+    
+    <h1> Part 2 </h1>
+    <p> Enter 3 Numbers: </p>
+    <p>1.<input type="number" name="num" id="num1"></p>
+    <p>2.<input type="number" name="num" id="num2"></p>
+    <p>3.<input type="number" name="num" id="num3"></p>
+    
+    <p> Add the Numbers <input type="radio" id="radSum" name="calculation" ></p>
+     <p> Multiply the Numbers <input type="radio" id="radProduct" name="calculation"></p>
+     <p> Average the Numbers <input type="radio" id="radAvg" name="calculation"></p>
+    
+    <button id="doMath" onclick="doMath()"> Do Math! </button>
+<hr>
+    
+    <div id="result"> 
+        </div> <!-- end of 'result' div section -->
+
+</body>
+</html>
