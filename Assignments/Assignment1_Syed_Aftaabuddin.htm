@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title> Free Currency Converter </title>
+    <style type="text/css">
+        #header {
+            background-color: skyblue; 
+            font-size: 150%;
+            text-align: center;
+        }
+        body {
+            background-color: pink;
+        }
+        .form {
+            border: 2px solid;
+            background-color: aquamarine;
+            font-size: 100%;
+        }
+        .image {
+            text-align: center;
+        }
+        #print {
+            background-color: yellow;
+        }
+    </style>
+
+   <script>
+    function converter()
+        {
+            var Initial, Kilo, Tons, Stone;
+           
+             Initial = parseFloat(document.getElementById("ConversionValue").value)
+            
+            if (document.getElementById("ConvertKilograms").selected)
+                {
+                   Kilo = Initial * (0.453);
+            document.getElementById("print").innerHTML = parseFloat(Initial) + " Pounds = " + parseFloat(Kilo.toFixed((2))) + " Kilograms";  
+                }
+            
+            if (document.getElementById("ConvertTons").selected)
+                {
+                   Tons = Initial * (0.0005);
+            document.getElementById("print").innerHTML = parseFloat(Initial) + " Pounds = " + parseFloat(Tons.toFixed((2))) + " Tons";  
+                }
+            
+            if (document.getElementById("ConvertStone").selected)
+                {
+                   Stones = Initial * (0.071);
+            document.getElementById("print").innerHTML = parseFloat(Initial) + " Pounds = " + parseFloat(Stones.toFixed((2))) + " Stones";  
+                }
+        }
+    </script>
+    </head>
+<body>
+    <div id="header">
+        <h1> Currency Converter</h1>
+         </div>
+        <div class="image">
+            <img src= "money.png" width ="300" height = "200" alt="Currency Converter">
+            </div>
+   <div id="main_form">
+<form class ="form">
+            <p>Enter amount in pounds: <input type="text" id="ConversionValue"/>
+                <br><br> <select> 
+            <option id="ConvertKilograms" > Kilograms </option>
+            <option  id="ConvertTons"> Tons </option>
+            <option id="ConvertStone"> Stone </option>
+        </select>
+                <br><br>
+            <input type="button" value="Convert" onclick="converter()" /></p>
+   </form>
+<div id="print"></div>
+       </div>
+</body>
+</html>
