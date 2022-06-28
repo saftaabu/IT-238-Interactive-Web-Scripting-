@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practice Page</title>
+
+<style type="text/css">
+  #main_content {  width:600px; border:2px solid; background-color:peachpuff; }
+  .highlight { background-color:yellow; color:red;  }
+  .emphasize { font-weight:bold; color:red; }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+<script>
+$(document).ready(function() {
+    $('img').attr('height','50px').attr('width','50px'); //make all images 50x50 pixels
+    
+      var totalimages = "6";
+
+    $('#img_num').html(totalimages);
+    $("#ask_user").append("<input id='user_search' type='text'>");
+    $("#ask_user").append("<button id='goBtn' type='button'>GO</button>");
+    
+        
+        $('#user_search').change(function() {
+            var input_user = $("#user_search").val();
+                                
+        if (input_user < 1 || input_user > 6) {
+        $("#error-msg").append("<p> Please Enter a number between 1 and " + totalimages); //this appends when the user enters the value more than or less than the totalimages
+        }
+        });
+    
+    $("#goBtn").click(function() {
+
+        $("#error-msg").remove(); //the error message is removed when the user enters the value between 1 and 6
+      
+        var input_user = $("#user_search").val();
+        if (input_user === '1') {
+            var newWindow = window.open("", "winInfo", "height=525, width=525");
+     newWindow.document.write('<img src="firetruck.jpg" alt="pic of firetruck">');
+        }
+        if (input_user === '2') {
+           var newWindow = window.open("", "winInfo", "height=525, width=525");
+     newWindow.document.write('<img src="baseball.jpg" alt="pic of baseball">');
+        }
+        if (input_user === '3') {
+           var newWindow = window.open("", "winInfo", "height=525, width=525");
+     newWindow.document.write('<img src="soccer_ball.jpg" alt="pic of soccer ball">');
+        }
+        if (input_user === '4') {
+           var newWindow = window.open("", "winInfo", "height=525, width=525");
+     newWindow.document.write('<img src="hockey_puck.jpg" alt="pic of hockey puck">');
+        }
+        if (input_user === '5') {
+           var newWindow = window.open("", "winInfo", "height=525, width=525");
+     newWindow.document.write('<img src="tennis_ball.jpg" alt="pic of tennisball">');
+        }
+        if (input_user === '6') {
+          var newWindow = window.open("", "winInfo", "height=525, width=525");
+     newWindow.document.write('<img src="basketball.jpg" alt="pic of basketball">');
+        }
+        
+    }); //end of 'goBtn' click function 
+            
+}); //end ready()
+</script>
+</head>
+
+<body>
+<div id="main_content">
+<h2>Page of Random Things</h2>
+    
+    <div id="ask_user">
+<p>There are <text id="img_num" value=""></text> small images on the page. Which one would you like to see?</p>
+        <text id="error-msg"></text>
+</div> <!-- end of 'ask_user' div -->
+
+<div id="random_text">
+<p>This page is intended to give you a way to practice with techniques throughout the course. Experiment with it, try new stuff, break it, etc, etc. If the page gets out of hand after numerous modifications, simply download a 'fresh' copy from the class web page. </p>
+
+<p>Here is a paragraph of random text. It says absolutely nothing useful. </p>
+
+<p>This is a second paragraph of completely usesless text.</p>
+</div> <!-- end of 'random_text' div -->
+
+<hr>
+<div id="images">
+<h3>Some Images</h3>
+	<p><img src="firetruck.jpg" alt="pic of truck" >  |
+	<img src="baseball.jpg" alt="pic of baseball" >  |
+	<img src="soccer_ball.jpg" alt="pic of soccer ball" >
+	</p>
+
+	<p><img src="hockey_puck.jpg" alt="pic of hockey puck" >  |
+	<img src="tennis_ball.jpg" alt="pic of tennis ball" >  |
+	<img src="basketball.jpg" alt="pic of basketball" >  	</p>
+</div><!-- end of 'images' div -->
+<hr>
+
+<div id="anchors">
+<h3>Some Hyperlinks</h3>
+<a href="http://www.mozart.com">All About Mozart</a><br>
+<a href="http://en.wikipedia.org/wiki/Queen_(band)">All About Queen</a><br>
+<a href="http://www.asparagus.org/">All About Asparagus</a><br>
+</div>
+
+<hr>
+<h3>Some Lists</h3>
+<div id="lists">
+<h4>Fabulous Fruit</h4>
+<ul>
+  <li>Apple</li>
+  <li>Orange</li>
+  <li>Strawberry</li>
+</ul>
+
+<h4>Varied Veggies</h4>
+<ul>
+  <li>Broccoli</li>
+  <li>Asparagus</li>
+  <li>Cauliflower</li>
+</ul>
+
+</div><!-- end lists div -->
+
+<hr>
+<h3>Some Form Elements</h3>
+<div id="practice_form">
+<p> What is your name? <input type="text" value="Enter some name" id="txtName" > </p>
+<p> How old are you? <input type="text" value="Enter your age" id="txtAge" > </p>
+<p> Do you agree to our terms of service? <input type="checkbox" id="chkAgree" > </p>
+
+<p> <input type="button" value="Button #1" id="button1" > |||
+	<input type="button" value="Button #2" id="button2" > |||
+	<input type="button" value="Button #3" id="button3" >
+</p>
+</div><!-- end of 'practice_form' div -->
+
+
+</div><!-- end 'main_content' div -->
+</body>
+</html>
