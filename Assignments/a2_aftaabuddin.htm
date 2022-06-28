@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Assignment 2 </title>
+    <style type="text/css">
+        .general-page { 
+         width:400px;
+            border: 5px solid;
+            border-color: #FF0000;
+        }
+    </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    
+    $(document).ready(function()
+    {
+        $('body').addClass('general-page');
+        $('img').width(100).height(100); //applied chaining 
+        $('div[id$="bio"]').hide();
+        
+       
+    }); //End of the ready() function
+        
+        function showMozartInfo()  
+        {
+            $('#mozart-bio').show(); //shows only mozarts bio
+            $('#einstein').hide(); //hides einsteins bio
+            $('#socrates').hide(); //hides socrates bio
+        }
+        
+        function showEinsteinInfo()
+        {
+            $('#einstein-bio').show();
+            $('#mozart').hide();
+            $('#socrates').hide();
+        }
+        
+        function showSocratesInfo()
+        {
+            $('#socrates-bio').show();
+            $('#einstein').hide();
+            $('#mozart').hide();
+    }   
+        
+    </script>
+</head>
+<body>
+    <div id="main-content">
+    <h2>Some Famous People</h2>
+        
+        <div id="all-images">
+             <img id="einstein" src="tn_einstein.jpg" height="100px" width="100px" alt="einstein-image" onclick='showEinsteinInfo()'>
+             <img id="mozart" src="tn_mozart.jpg" height="100px" width="100px" alt="mozart-image" onclick='showMozartInfo()'>
+             <img id="socrates" src="tn_socrates.jpg" height="100px" width="100px" alt="socrates-image" onclick='showSocratesInfo()'>
+        </div> <!-- end of all-images div --> 
+        
+            
+        <div id ="einstein-bio"> 
+            <p> Einstein was a Theoretical physicist. </p>
+        </div> <!-- end of einstein-bio div -->
+        
+        
+        <div id="mozart-bio">
+            <p> Mozart was born in 1756. </p>
+        </div> <!-- end of mozart-bio div -->
+        
+        
+        <div id="socrates-bio">
+            <p> Socrates was a philosopher and was born in Alopece. </p>
+        </div> <!-- end of socrates-bio div -->
+
+
+   <p><input id="showImages" type="button" value="Show All Images" onclick="$('img').show(); $('div[id=einstein-bio]').hide(); $('div[id=mozart-bio]').hide(); $('div[id=socrates-bio]').hide();"></p>
+        </div> <!-- end of main-content div -->
+
+
+</body>
+</html>
