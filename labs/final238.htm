@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Hotel De Barado</title>
+    <link href= 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+</head>
+    <style>
+        .ui-datepicker {
+            width: 12em;
+        }
+        h1{
+            color: blue;
+        }
+   
+    </style>
+   
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+   
+    <script>      
+    $(document).ready(function() {
+ 
+                $(function() {
+                    $("#departureDate").datepicker({
+                        minDate: new Date()
+                    });
+                });
+ 
+                $(function() {
+                    $("#arrivalDate").datepicker({
+                        maxDate: 7
+                    });
+                });
+ 
+                $('#departureDate').change(function() {
+                    startDate = $(this).datepicker('getDate');
+                    $("#arrivalDate").datepicker("option", "minDate", startDate);
+                 
+                });
+ 
+                $('#arrivalDate').change(function() {
+                    endDate = $(this).datepicker('getDate');
+                    $("#departureDate").datepicker("option", "maxDate", endDate);
+                   
+                    //Getting date count
+                    var dateVal;
+                    dateVal = (endDate - startDate);
+                    var numNight = dateVal / (1000 * 60 * 60 * 24);
+ 
+                 
+          //bookMyHotel function      
+        $.fn.bookMyHotel = function() {
+           
+            //Initializing variables
+            var numGuest = document.getElementById('numGuest').value;
+            var final;
+            var roomCost;
+ 
+       
+           
+            //Type of Room Cost
+            if (document.getElementById('regular').checked)
+                {
+                    roomCost = document.getElementById('regular').value;
+                }
+            if (document.getElementById('deluxe').checked)
+                {
+                    roomCost = document.getElementById('deluxe').value;
+                }
+            if (document.getElementById('suite').checked)
+                {
+                    roomCost = document.getElementById('suite').value;
+                }
+           
+            //final amount calculation
+            final = ((parseFloat(roomCost) * (parseFloat(numNight))) + parseFloat(numGuest));
+            finalCost.innerHTML = ("YOUR FINAL COST WILL BE: $" + final);
+           
+            }
+       
+            //submit button
+            $(".submit-btn").click(function(){
+                $.fn.bookMyHotel();
+            });
+           
+        });
+       
+                   
+    });
+        </script>
+<body>
+   
+    <h1> HOTEL DE BARADO</h1>
+   
+<form name="reservation">
+    <p>Full Name: <input type="text" id="fullName" name ="user_name"> </p>
+    <p>Email: <input type="text" id="email" name ="email"> </p>
+    Departure Date: <input type="text" id="departureDate">
+     Arrival Date: <input type="text" id="arrivalDate">
+    <h4>Type of Room:</h4>          
+         <p>Regular ($150/night) <input type="radio" value="150" id="regular" name ="roomchoice"></p>
+         <p>Deluxe ($250/night) <input type ="radio" value="250" id="deluxe" name="roomchoice"></p>
+        <p>Suite ($400/night) <input type ="radio" value="400" id="suite" name="roomchoice"></p>  
+    <h4>Number of guests: </h4>
+        <select id="numGuest">
+            <option value="0" id="g1"> 1 </option>
+            <option value="20" id="g2"> 2 </option>
+            <option value="40" id="g3"> 3 </option>
+            <option value="60" id="g4"> 4 </option>
+            <option value="80" id="g5"> 5 </option>
+        </select>
+   
+    <p><input type="button" value="Submit" class="submit-btn"></p>
+   
+    <p id="final">
+        </p> <!-- end of 'final' div section -->
+    <p id="finalCost">
+        </p> <!-- end of 'finalCost' div section -->
+   
+    </form> <!-- end of 'reservation' form -->
+ 
+</body>
+</html>
