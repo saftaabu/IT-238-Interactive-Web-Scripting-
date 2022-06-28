@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practice Page - Assignment 5</title>
+
+<style type="text/css">
+  #main_content {  width:600px; border:2px solid; background-color:peachpuff; }
+  .highlight { background-color:yellow; color:red;  }
+  .emphasize { font-weight:bold; color:red; }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+<script>
+$(document).ready(function() {
+  $('img').attr('height','50px').attr('width','50px'); //make all images 50x50 pixels
+   
+    
+    
+$('#txtNameResult').hide(); //'txtNameResult' div is hidden when the page first loads
+    
+$('#txtName').focusout(function(){
+    
+    var name = $('#txtName').val();
+        if (name == ''){
+        $('#txtNameResult').show().text("You Must Enter A Name!");
+    }
+        else {
+        $('#txtNameResult').show().text("Hello, " + name +"!");
+    } 
+}); //end of focusout function for txtName
+    
+    $('#txtName').focusin(function(){
+       $('txtNameResult').hide();   
+        
+    }); //end of focusin function for txtName
+    
+    $('img').click(function(){
+        
+        if($('input[id="radFileName"]:checked').val()){
+            var imgSrc = $(this).attr('src');
+            $('#fileDescription').show().append("The File Name of this image is " + imgSrc + '<br>');
+        }
+        
+        if ($('input[id="radDescription"]:checked').val()){
+            var imgDescription = $(this).attr('alt');
+            $('#fileDescription').show().append("The Description of this image is " + imgDescription + '<br>');
+        }
+        
+    }); //end of displaying filename/description of an image
+    
+    $('img').dblclick(function(){
+        
+        var imgSrc = $(this).attr('src');
+        
+        var newWindow = window.open("", "winInfo", "height=525", "width=525");
+        newWindow.location.assign(imgSrc);
+        
+    }) //end of displaying imgSrc in a new window by double-clicking
+
+}); //end ready()
+</script>
+</head>
+
+<body>
+<div id="main_content">
+<h2>Page of Random Things</h2>
+<div id="random_text">
+<p>This page is intended to give you a way to practice with techniques throughout the course. Experiment with it, try new stuff, break it, etc, etc. If the page gets out of hand after numerous modifications, simply download a 'fresh' copy from the class web page. </p>
+
+<p>Here is a paragraph of random text. It says absolutely nothing useful. </p>
+
+<p>This is a second paragraph of completely usesless text.</p>
+</div> <!-- end of 'random_text' div -->
+
+<hr>
+    
+    
+<div id="images">
+    
+   <p>  <input type="radio" id="radFileName" name="imgInfo" value="FileName">File Name </p>
+    <p> <input type="radio" id="radDescription" name="imgInfo" value="Description" checked> Description </p>
+    
+    
+<h3>Some Images</h3>
+	<p><img src="firetruck.jpg" alt="pic of truck" >  |
+	<img src="baseball.jpg" alt="pic of baseball" >  |
+	<img src="soccer_ball.jpg" alt="pic of soccer ball" >
+	</p>
+
+	<p><img src="hockey_puck.jpg" alt="pic of hockey puck" >  |
+	<img src="tennis_ball.jpg" alt="pic of tennis ball" >  |
+	<img src="basketball.jpg" alt="pic of basketball" >  	</p>
+</div><!-- end of 'images' div -->
+    
+    <div id ="fileDescription"> </div> <!-- end of 'fileDescription' div -->
+<hr>
+
+<div id="anchors">
+<h3>Some Hyperlinks</h3>
+<a href="http://www.mozart.com">All About Mozart</a><br>
+<a href="http://en.wikipedia.org/wiki/Queen_(band)">All About Queen</a><br>
+<a href="http://www.asparagus.org/">All About Asparagus</a><br>
+</div>
+
+<hr>
+<h3>Some Lists</h3>
+<div id="lists">
+<h4>Fabulous Fruit</h4>
+<ul>
+  <li>Apple</li>
+  <li>Orange</li>
+  <li>Strawberry</li>
+</ul>
+
+<h4>Varied Veggies</h4>
+<ul>
+  <li>Broccoli</li>
+  <li>Asparagus</li>
+  <li>Cauliflower</li>
+</ul>
+
+</div><!-- end lists div -->
+
+<hr>
+<h3>Some Form Elements</h3>
+<div id="practice_form">
+<p> What is your name? <input type="text" id="txtName" > </p> 
+<p> How old are you? <input type="text" value="Enter your age" id="txtAge" > </p>
+<p> Do you agree to our terms of service? <input type="checkbox" id="chkAgree" > </p>
+   </div><!-- end of 'practice_form' div --> 
+ <div id="txtNameResult"> 
+    </div> <!-- end of 'txtNameResult' div -->
+</div><!-- end 'main_content' div -->
+</body>
+</html>
