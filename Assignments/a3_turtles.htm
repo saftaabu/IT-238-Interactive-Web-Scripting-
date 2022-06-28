@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Assignment 3 - About Turtles </title>
+    <h1> All About Turtles</h1>
+    <style type="text/css">
+
+        #about-nickels-age 
+        {
+            font-weight: bold;
+        }
+    </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    
+   $(document).ready(function(){
+     
+       $(".img-hover").mouseover(function(){
+        $(".img-hover").css("border", "5px dotted #0000FF");
+    });
+        $(".img-hover").mouseout(function(){
+        $(".img-hover").css("border", "none");
+    });
+       
+        $("#select_a_font").change(function (){
+        $("body").css("font-family", $(this).val());
+        
+    });
+}); //End of the ready() function
+        
+function calc_age()
+        {
+            var bornIn = 1996;
+            var year = document.getElementById('nickel_year').value;
+            var age = year - bornIn;
+            
+            $('#about-turtles').append('In ' + year + ', Nickel will be ' + age + ' years old!'); 
+        }
+        
+    </script>
+</head>
+<body>
+    <img id="turtle" class="img-hover" src="nickel.jpg" height="300px" width="460px" alt="turtle-image">
+    <div id='about-turtles'> 
+    <p> Turtles are reptiles of the order Testudines characterized by a special bony or cartilaginous shell developed from their ribs and acting as a shield."Turtle" may refer to the order as a whole (American English) or to fresh-water and sea-dwelling testudines (British English).The order Testudines includes both extant (living) and extinct species. The earliest known members of this group date from the Middle Jurassic, making turtles one of the oldest reptile groups and a more ancient group than snakes or crocodilians. Of the 356 known species alive today, some are highly endangered.</p>
+        
+    <p> Turtle may either refer to the order as a whole, or to particular turtles that make up a form taxon that is not monophyletic, or may be limited to only aquatic species. Tortoise usually refers to any land-dwelling, non-swimming chelonian. Terrapin is used to describe several species of small, edible, hard-shell turtles, typically those found in brackish waters.</p>
+    </div> <!-- end of about-turtles div --> 
+
+    <input type='button' id='btn_shrink_img' value='Shrink Image' onclick="$('img').width(230).height(200)"> 
+    <input type='button' id='btn_englarge_img' value='Enlarge Image' onclick="$('img').width(690).height(450)">  
+    <input type='button' id='btn_restore_img' value='Restore Image' onclick="$('img').width(460).height(300)"> 
+    
+    <select id="select_a_font" > 
+        <option> Select a Font </option>
+        <option value='Helvetica'> Helvetica </option>
+        <option value='Arial'> Arial </option>
+        <option value='Times New Roman'> Times New Roman </option>
+    </select> <!-- end of select -->
+        
+
+<div id="about-nickels-age">
+   <p> Nickel is Shedd's sea turtle. Nickel is estimated to have been born in 1996. To find out how old will Nickel be in future, please enter an year greater than 1996.</p>
+    </div> <!-- end of about-nickels-age div -->
+    
+    <p>Enter year: <input type="text" id="nickel_year"/></p>
+    <p><input type="button" value="Find age" onclick="calc_age()"></p>
+    
+   
+</body> 
+</html>
